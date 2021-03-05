@@ -114,14 +114,14 @@ func (dr *DigestRequest) Execute() (resp *http.Response, err error) {
 	}
 
 	if resp.StatusCode == 401 {
-		return dr.executeNewDigest(resp)
+		return dr.ExecuteNewDigest(resp)
 	}
 
 	// return the resp to user to handle resp.body.Close()
 	return resp, nil
 }
 
-func (dr *DigestRequest) executeNewDigest(resp *http.Response) (resp2 *http.Response, err error) {
+func (dr *DigestRequest) ExecuteNewDigest(resp *http.Response) (resp2 *http.Response, err error) {
 	var (
 		auth     *authorization
 		wa       *wwwAuthenticate
